@@ -29,14 +29,12 @@ const Generator = () => {
   };
 
   useEffect(() => {
-    let interval: NodeJS.Timeout | undefined = undefined;
+    let interval: NodeJS.Timeout;
     if (timerIsRunning) {
       generateAndPushNumber();
       interval = setInterval(() => {
         generateAndPushNumber();
       }, 15000);
-    } else {
-      clearInterval(interval);
     }
     return () => clearInterval(interval);
   }, [timerIsRunning]);
